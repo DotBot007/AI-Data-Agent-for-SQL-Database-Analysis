@@ -1,0 +1,15 @@
+# .gitignore
+# This file tells Git which files to ignore.
+
+# Ignore Python virtual environment directories
+__pycache__/
+.venv/
+venv/
+env/
+
+# Ignore local environment variables (CRITICAL)
+.env
+
+# Ignore other common development files
+*.pyc
+*.sqlite3
