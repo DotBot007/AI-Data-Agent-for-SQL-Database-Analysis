@@ -1,1 +1,20 @@
+# render.yaml
+# This is a Render Blueprint that defines your web service.
+# Render will automatically detect this file and use it for deployment.
 
+services:
+  - type: web
+    name: ai-data-agent-backend
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: DATABASE_URL
+        # This is a placeholder. Render will use the value from your dashboard.
+        value: "your-supabase-url"
+      - key: GEMINI_API_KEY
+        # This is a placeholder. Render will use the value from your dashboard.
+        value: "your-gemini-api-key"
+      - key: PORT
+        value: "10000"
